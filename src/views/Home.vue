@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <h1 class="text-center b"> HOME </h1>
         <div class="container mx-auto sm:px-4" style="padding-top: 20px">
             <div class="grid grid-rows-4 grid-flow-col gap-6">
                 <div class="col">

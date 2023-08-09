@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto sm:px-4">
-      <h1 class="text-center b"> Tiket </h1>
+      <h1 class="text-center b"> TIKET </h1>
       <table class="table-auto">
         <thead>
           <tr>
