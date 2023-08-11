@@ -1,28 +1,28 @@
 <template>
-    <section class="py-12 sm:py-16">
+    <section class="py-10 sm:py-16">
         <div class="container mx-auto px-4">
             <div v-if="product">
                 <nav class="flex">
                     <ol role="list" class="flex items-center">
                         <li class="text-left">
                             <div class="-m-1">
-                                <a href="#"
+                                <a href="/"
                                     class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800">
                                     Home </a>
                             </div>
                         </li>
-
+  
                         <li class="text-left">
                             <div class="flex items-center">
                                 <span class="mx-2 text-gray-400">/</span>
                                 <div class="-m-1">
-                                    <a href="#"
+                                    <a href="/product"
                                         class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800">
                                         Products </a>
                                 </div>
                             </div>
                         </li>
-
+  
                         <li class="text-left">
                             <div class="flex items-center">
                                 <span class="mx-2 text-gray-400">/</span>
@@ -35,7 +35,7 @@
                         </li>
                     </ol>
                 </nav>
-
+  
                 <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
                     <div class="lg:col-span-3 lg:row-end-1">
                         <div class="lg:flex lg:items-start">
@@ -44,7 +44,7 @@
                                     <img class="h-full w-full max-w-full object-cover" :src="product.image" alt="" />
                                 </div>
                             </div>
-
+  
                             <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
                                 <div class="flex flex-row items-start lg:flex-col">
                                     <button type="button"
@@ -63,10 +63,10 @@
                             </div>
                         </div>
                     </div>
-
+  
                     <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                         <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{ product.title }}</h1>
-
+  
                         <div class="mt-5 flex items-center">
                             <div class="flex items-center">
                                 <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@
                             </div>
                             <p class="ml-2 text-sm font-medium text-gray-500">{{ product.rating.rate }}</p>
                         </div>
-
+  
                         <h2 class="mt-8 text-base text-gray-900">Category</h2>
                         <div class="mt-3 flex select-none flex-wrap items-center gap-1">
                             <label class="">
@@ -112,14 +112,14 @@
                                     {{ product.category }}</p>
                             </label>
                         </div>
-
+  
                         <div
                             class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                             <div class="flex items-end">
                                 <h1 class="text-3xl font-bold">${{ product.price }}</h1>
                                 <!-- <span class="text-base">/month</span> -->
                             </div>
-
+  
                             <button type="button"
                                 class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
@@ -130,7 +130,7 @@
                                 Add to cart
                             </button>
                         </div>
-
+  
                         <ul class="mt-8 space-y-2">
                             <li class="flex items-center text-left text-sm font-medium text-gray-600">
                                 <svg class="mr-2 block h-5 w-5 align-middle text-gray-500"
@@ -142,7 +142,7 @@
                                 </svg>
                                 Free shipping worldwide
                             </li>
-
+  
                             <li class="flex items-center text-left text-sm font-medium text-gray-600">
                                 <svg class="mr-2 block h-5 w-5 align-middle text-gray-500"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -155,24 +155,18 @@
                             </li>
                         </ul>
                     </div>
-
+  
                     <div class="lg:col-span-3">
                         <div class="border-b border-gray-300">
                             <nav class="flex gap-4">
                                 <a href="#" title=""
                                     class="border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800">
                                     Description </a>
-
-                                <a href="#" title=""
-                                    class="inline-flex items-center border-b-2 border-transparent py-4 text-sm font-medium text-gray-600">
-                                    Reviews
-                                    <span
-                                        class="ml-2 block rounded-full bg-gray-500 px-2 py-px text-xs font-bold text-gray-100">
-                                        1,209 </span>
-                                </a>
+  
+                                
                             </nav>
                         </div>
-
+  
                         <div class="mt-8 flow-root sm:mt-12">
                             <p class="mt-4">{{ product.description }}</p>
                         </div>
@@ -184,11 +178,12 @@
             </div>
         </div>
     </section>
-</template>
+  </template>
+  
+  <script>
+  import { mapGetters, mapActions } from "vuex";
 
-<script>
-import { mapGetters, mapActions } from "vuex";
-export default {
+  export default {
     computed: {
         ...mapGetters("product", ["getProductById"]),
         product() {
@@ -203,5 +198,6 @@ export default {
         console.log("Fetching single product with ID:", productId);
         this.fetchSingleProduct(productId);
     },
-};
-</script>
+  
+  };
+  </script>

@@ -1,9 +1,9 @@
 import axios from "axios";
-
-const product = {
+const products = {
   namespaced: true,
   state: {
     productData: [],
+
   },
 
   getters: {
@@ -16,6 +16,13 @@ const product = {
       console.log("Product:", product);
       return product;
     },
+    // get filter product
+    getProductByCategory: (state) => (productCategory) => {
+      const product = state.productData.filter(
+        (p) => p.category == productCategory
+      );
+      return product
+    },
   },
   actions: {
     async fetchProducts({ commit }) {
@@ -27,7 +34,6 @@ const product = {
         console.log(error);
       }
     },
-
     // get single product
     async fetchSingleProduct({ commit }, productId) {
       try {
@@ -35,6 +41,17 @@ const product = {
           `https://fakestoreapi.com/products/${productId}`
         );
         commit("SET_SINGLE_PRODUCT", response.data);
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchFilterProduct({ commit }, productCategory) {
+      try {
+        const response = await axios.get(
+          `https://fakestoreapi.com/products/${productCategory}`
+        );
+        commit("SET_FILTER_PRODUCT", response.data);
       } catch (error) {
         alert(error);
         console.log(error);
@@ -48,7 +65,10 @@ const product = {
     SET_SINGLE_PRODUCT(state, product) {
       state.singleProduct = product;
     },
+    SET_FILTER_PRODUCT(state, product) {
+      state.filterProduct = product;
+    },  
   },
 };
 
-export default product;
+export default products;

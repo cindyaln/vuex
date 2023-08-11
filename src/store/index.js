@@ -6,6 +6,10 @@ import users from "./modules/users";
 import tiket from "./modules/tiket";
 import product from "./modules/pruduct";
 import kategori from "./modules/kategori";
+import login from "./modules/login";
+import auth from "./modules/auth";
+
+    
 
 const store = createStore ({
     state: {
@@ -19,7 +23,9 @@ const store = createStore ({
         tiket,
         product,
         kategori,
+        login,
+        auth,
     },
 });
 
-export default store; 
+export default store;  

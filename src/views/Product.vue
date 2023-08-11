@@ -1,8 +1,7 @@
 <template>
     <div class="bg-white">
-        <h1 class="text-center b"> PRODUCT </h1>
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-            <h2 class="text-2xl font-bold tracking-tight text-gray-900"></h2>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900">All Product</h2>
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 pt-2">
                 <div v-for="product in getProducts" :key="product.id">
                     <router-link :to="{ name: 'SingleProduct', params: { id: product.id } }" class="group">
